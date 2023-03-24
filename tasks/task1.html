@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+    <a href="../index.html">Home Work №8</a>
+    <h1>Задача 1</h1>
+    <div>
+        <p class="task-p">Дано масив, який містить оцінки з К предметів. Знайти середній бал і з’ясувати до якої
+            категорії
+            він відноситься
+            (відмінник, двійочник (має хоча би одну двійку), хорошист (оцінки добре і відмінно), трійочник(є хоча би
+            одна
+            трійка)).</p>
+    </div>
+    <h2 class="task-h2">Розв'язок:</h2>
+
+    <script>
+        //1.Вводимо необхідні дані
+        const inputNumbersSubjects = parseInt(prompt("Введіть кількість предметів", ""))
+        let arrayScores = []
+        // Декларуємо функціЇ:
+        // 1) Функція для визначееня статусу учня
+        function checkStatusStudent(minScore) {
+            statusStudent = ""
+            switch (minScore) {
+                case 1:
+                    statusStudent = "двійочник"
+                    break
+                case 2:
+                    statusStudent = "двійочник"
+                    break
+                case 3:
+                    statusStudent = "трійочник"
+                    break
+                case 4:
+                    statusStudent = "хорошист"
+                    break
+                default:
+                    statusStudent = "відмінник"
+            }
+            return statusStudent
+        }
+
+        //2)генеруємо рандомну оцінку по предмету
+        function getRandomScores() {
+            const randomNum = Math.floor(Math.random() * 5) + 1
+            return randomNum
+        }
+
+        //3)ф-ція для заповнювання массиву
+        function fillArraysScores(numbersSubjects, fillableArray) {
+            for (let i = 0; i < numbersSubjects; i++) {
+                fillableArray.push(getRandomScores())
+            }
+            console.log(fillableArray)
+            return fillableArray
+        }
+
+        //4)  перевірки
+        function checkStudentsScores(arrayScores) {
+            let avarageScores = 0
+            let minScores = 5 //перевіремо всі оцінки і по мінімальній зрозуміємо до кого відноситься учень
+            for (let index = 0; index < arrayScores.length; index++) {
+                const element = arrayScores[index]
+                // console.log(element)
+                avarageScores += element // cумуємо оцінки для визначення середньої оцінки
+                if (element < minScores) minScores = element
+            }
+            console.log(avarageScores)
+            console.log(avarageScores / arrayScores.length)
+            return [checkStatusStudent(minScores), avarageScores / arrayScores.length] //поверта
+        }
+
+        //5)Функція для виводу результату
+        function showResultStudent(rusults) {
+            document.write(`Студент - ${rusults[0]} <br>`)
+            document.write(`Середня оцінка студента - ${rusults[1]}`)
+        }
+
+        // Заповнюємо масив
+        arrayScores = fillArraysScores(inputNumbersSubjects, arrayScores)
+        //Викликаємо функцію   перевірки
+        const results = checkStudentsScores(arrayScores)
+        //Виводимо результат
+        showResultStudent(results)
+
+        // // обчислює середню оцінку
+        // function calculateAverage(scores) {
+        //     let sum = 0;
+        //     for (let i = 0; i < scores.length; i++) {
+        //         sum += scores[i];
+        //     }
+        //     return sum / scores.length;
+        // }
+
+        // function calculateCategory(scores) {
+        //     // передаю середню оцінку
+        //     let average = calculateAverage(scores);
+        //     // порівняння середньої оцінки з критеріями категорії
+        //     if (average < 3) {
+        //         return "двійочник";
+        //     } else if (average < 4) {
+        //         return "трійочник";
+        //     } else if (average < 5) {
+        //         return "хорошист";
+        //     } else {
+        //         return "відмінник";
+        //     }
+        // }
+
+        // // масив
+        // const scores = [4, 5, 3, 2, 1];
+        // const averageScore = calculateAverage(scores);
+        // const studentCategory = calculateCategory(scores);
+
+        // document.write(`<div><p>Середня оцінка: ${averageScore}</p></div>
+    	// 		<div><p>Категорія: ${studentCategory}</p></div>`);
+    </script>
+</body>
+
+</html>

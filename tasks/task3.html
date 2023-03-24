@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+    <a href="../index.html">Home Work №8</a>
+    <h1>Задача 3</h1>
+    <div>
+        <p class="task-p">Дано масив імен учнів. З’ясувати скільки разів зустрічається ім’я «Іван».</p>
+    </div>
+    <h2 class="task-h2">Розв'язок:</h2>
+
+    <script>
+        // variant - 1 -------------------------------------
+        function findNameIvan(allNameStudenst) {
+            let counter = 0
+            for (let i = 0; i < allNameStudenst.length; i++) {
+                if (allNameStudenst[i] === 'Іван') {
+                    counter++
+                }
+
+            }
+            return counter
+        }
+
+        const allNameStudenst = ['Оленка', 'Іван', 'Марія', 'Петро', 'Євген', 'Іван', 'Іван']
+        const ivanCounter = findNameIvan(allNameStudenst)
+        document.write(`<div><p>Ім'я Іван зустрічається ${ivanCounter} разів</p></div>`);
+
+
+    </script>
+</body>
+
+</html>
