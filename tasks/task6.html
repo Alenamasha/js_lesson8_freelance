@@ -27,6 +27,50 @@
 	<h2 class="task-h2">Розв'язок:</h2>
 
 	<script>
+		function getRandomNum(min, max) {
+			return Math.floor(Math.random() * (max - min + 1)) + min
+		}
+
+		function getPricesArr(pricesNumber) {
+			let grades = []
+			for (let i = 0; i < pricesNumber; i++) {
+				grades[i] = getRandomNum(1, 10)
+			}
+			return grades
+		}
+
+		function enoughMoneyFor(customerMoney, productNames, productsPrices) {
+			let canBuyProdName = []
+			let canBuyProdPrice = []
+
+			for (let i = 0; i < productsPrices.length; i++) {
+				if (customerMoney - productsPrices[i] >= 0) {
+					canBuyProdName.push(productNames[i])
+					canBuyProdPrice.push(productsPrices[i])
+				}
+			}
+			return [canBuyProdName, canBuyProdPrice]
+		}
+
+		function getResultToShow(currentMoney, canBuyName, canBuyPrice) {
+			let showResult = `Ви маєте ${currentMoney} грн.<br>Вам вистачає грошей, щоб купити:<br>`
+			for (let i = 0; i < canBuyName.length; i++) {
+				showResult += `* ${canBuyName[i]} ——— ${canBuyPrice[i]} грн.<br>`
+			}
+			return showResult
+		}
+
+		const productsTitles = ['молоко', 'вода', 'картопля', 'хліб', 'огірок']
+		const productsPrices = getPricesArr(productsTitles.length)
+		const money = parseFloat(prompt('Введіть наявну суму грошей'))
+		const [products, prices] = enoughMoneyFor(money, productsTitles, productsPrices)
+		const result = getResultToShow(money, products, prices)
+
+		document.write(result)
+
+	</script>
+
+	<!-- <script>
 
 		function getPriceProductMoneyArray(productsPrices, productsTitles, userHasMoney) {
 			let affordableProducts = [] // Створюємо змінну affordableProducts і присвоюємо їй порожній масив
@@ -51,7 +95,7 @@
 				userHasMoney
 			)}</p></div>`
 		)
-	</script>
+	</script> -->
 </body>
 
 </html>

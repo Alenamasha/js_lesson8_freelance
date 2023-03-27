@@ -23,6 +23,65 @@
     <h2 class="task-h2">Розв'язок:</h2>
 
     <script>
+        function getGradesAvg(grades) {
+            let gradesSum = 0
+            for (let i = 0; i < grades.length; i++) {
+                gradesSum += grades[i]
+            }
+
+            return gradesSum / grades.length
+        }
+
+        function getNumberOfBadGrades(grades) {
+            let numOf2 = 0
+            for (let grade of grades) {
+                if (grade === 2) numOf2++
+            }
+            return numOf2
+        }
+
+        function getNumberOfGoodGrades(grades) {
+            let numOf4And5 = 0
+            for (let grade of grades) {
+                if (grade === 4 || grade === 5) numOf4And5++
+            }
+            return numOf4And5
+        }
+
+        function getNumberOfGradesBelowAvg(grades, gradesAvg) {
+            let numOfBelowAvg = 0
+            for (let grade of grades) {
+                if (grade < gradesAvg) numOfBelowAvg++
+            }
+            return numOfBelowAvg
+        }
+
+        function getRandomNum(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min
+        }
+
+        function getGradesArr(gradesNumber) {
+            let grades = []
+            for (let i = 0; i < gradesNumber; i++) {
+                grades[i] = getRandomNum(2, 5)
+            }
+            return grades
+        }
+
+        // const studentsGrades = [2, 3, 4, 5, 3, 3, 2, 4, 5]
+        const studentsGrades = getGradesArr(5)
+        const gradesAvg = getGradesAvg(studentsGrades)
+        const numOf2 = getNumberOfBadGrades(studentsGrades)
+        const numOf4and5 = getNumberOfGoodGrades(studentsGrades)
+        const numOfGradesBelowAvg = getNumberOfGradesBelowAvg(studentsGrades, gradesAvg)
+
+        document.write(`Оцінки: ${studentsGrades}<br>`)
+        document.write(`Кількість двійок: ${numOf2}<br>`)
+        document.write(`Кількість четвірок і пʼятірок: ${numOf4and5}<br>`)
+        document.write(`Кількість оцінок нижчих за середнє: ${numOfGradesBelowAvg} (середнє = ${gradesAvg.toFixed(2)})`)
+    </script>
+
+    <!-- <script>
         const studentsScoresArray = [2, 3, 4, 5, 2, 3, 4, 5, 2, 3, 4, 5]
 
         function isStudentDeuce(studentsScoresArray) {
@@ -65,7 +124,7 @@
     		<div><p>Кількість хороших оцінок (4-5 балів) у студента = ${countStudentGoodMarks}</p></div>
     		<div><p>Кількість оцінок, які нижче середнього (3 бали) у студента = ${countStudentGradesBelowAverage}</p></div>`)
 
-    </script>
+    </script> -->
 </body>
 
 </html>

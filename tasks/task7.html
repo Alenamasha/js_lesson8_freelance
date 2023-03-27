@@ -25,8 +25,61 @@
         </ol>
     </div>
     <h2 class="task-h2">Розв'язок:</h2>
-
     <script>
+        function getPaymentsSumInRange(payments, startMonth, endMonth) {
+            let sum = 0
+            for (let month = startMonth; month <= endMonth; month++) {
+                sum += payments[month - 1]
+            }
+            return sum
+        }
+
+        function getEvenPaymentsSum(payments) {
+            let sum = 0
+            for (let i = 1; i <= payments.length; i++) {
+                if (i % 2 === 0) sum += payments[i - 1]
+            }
+            return sum
+        }
+
+        function getPaymentsSumFirstMonthOfSeason(payments) {
+            let sum = 0
+            for (let i = 1; i <= payments.length; i++) {
+                if (i % 3 === 0) sum += payments[i - 1]
+            }
+            return sum
+        }
+
+        function getRandomArr(valuesNum, min, max) {
+            let arr = []
+            for (let i = 0; i < valuesNum; i++) {
+                const randNum = min + Math.floor(Math.random() * (max - min + 1))
+                arr.push(randNum)
+            }
+            return arr
+        }
+
+        // const annualPayments = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+        const annualPayments = getRandomArr(12, 1, 10)
+
+        const sumPerYear = getPaymentsSumInRange(annualPayments, 1, 12)
+        const sumFirstHalfYear = getPaymentsSumInRange(annualPayments, 1, 6)
+        const sumSecondHalfYear = getPaymentsSumInRange(annualPayments, 7, 12)
+        const sumOfSummer = getPaymentsSumInRange(annualPayments, 6, 8)
+        const sumPerQuarter = getPaymentsSumInRange(annualPayments, 4, 6)
+        const sumEvenMonths = getEvenPaymentsSum(annualPayments)
+        const sumFirstMonthsOfSeason = getPaymentsSumFirstMonthOfSeason(annualPayments)
+
+        document.write(`Сума за увесь рік = ${sumPerYear}<br>`)
+        document.write(`Сума за першу половину року = ${sumFirstHalfYear}<br>`)
+        document.write(`Сума за другу половину року = ${sumSecondHalfYear}<br>`)
+        document.write(`Сума за літо = ${sumOfSummer}<br>`)
+        document.write(`Сума за II квартал = ${sumPerQuarter}<br>`)
+        document.write(`Сума за парні місяці = ${sumEvenMonths}<br>`)
+        document.write(`Сума за місяці, які є початковими у сезоні = ${sumFirstMonthsOfSeason}`)
+    </script>
+
+    <!-- <script>
 
         // за весь рік -------------------------
         function getAmountOfMoneyPerYear(allPaymentsTheYearArray) {
@@ -135,7 +188,7 @@
     </script>
     <div>
         <p></p>
-    </div>
+    </div> -->
 </body>
 
 </html>

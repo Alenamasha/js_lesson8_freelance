@@ -18,6 +18,24 @@
     <h2 class="task-h2">Розв'язок:</h2>
 
     <script>
+        function getNumberOfFindingName(namesList, name) {
+            let nameNumber = 0
+            for (let i = 0; i < namesList.length; i++) {
+                if (name === namesList[i]) nameNumber++
+            }
+            return nameNumber
+        }
+
+
+        const names = ['Оля', 'Іван', 'Саша', 'Андрій', 'Іван', 'Микола', 'Олег', 'Іван']
+        const nameToFind = 'Іван'
+
+        const nameNumber = getNumberOfFindingName(names, nameToFind)
+
+        document.write(`Імʼя ${nameToFind} зустрічається ${nameNumber} разів`)
+    </script>
+
+    <!-- <script>
         // variant - 1 -------------------------------------
         function findNameIvan(allNameStudenst) {
             let counter = 0
@@ -35,7 +53,7 @@
         document.write(`<div><p>Ім'я Іван зустрічається ${ivanCounter} разів</p></div>`);
 
 
-    </script>
+    </script> -->
 </body>
 
 </html>

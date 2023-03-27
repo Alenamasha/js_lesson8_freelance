@@ -22,7 +22,44 @@
     </div>
     <h2 class="task-h2">Розв'язок:</h2>
 
+
     <script>
+        function getNumberWithFirstLetter(regPlates, letter) {
+            let firstANumber = 0
+            for (let i = 0; i < regPlates.length; i++) {
+                if (regPlates[i][0] === letter) firstANumber++
+            }
+            return firstANumber
+        }
+
+        function getNumberWhenFirstAndLastAreEqual(regPlates) {
+            let equalNumber = 0
+            for (let i = 0; i < regPlates.length; i++) {
+                if (regPlates[i][0] === regPlates[i].at(-1)) equalNumber++
+            }
+            return equalNumber
+        }
+
+        function getNumberWhenLengthMore5(regPlates) {
+            let lengthNumber = 0
+            for (let i = 0; i < regPlates.length; i++) {
+                if (regPlates[i].length > 5) lengthNumber++
+            }
+            return lengthNumber
+        }
+
+        const vehicleRegPlates = ['AK2455AA', 'RE1911YY', 'AA0485ZA', 'AT12V', '1564', 'AA1234TV', '3412', 'AH0880']
+        const firstLetterNumber = getNumberWithFirstLetter(vehicleRegPlates, 'A')
+        const firstAndLastEqual = getNumberWhenFirstAndLastAreEqual(vehicleRegPlates)
+        const lengthMoreThen5 = getNumberWhenLengthMore5(vehicleRegPlates)
+
+        document.write(`Кількість номерів, які:<br>- починаються на літеру 'А': ${firstLetterNumber}<br>`)
+        document.write(`- перша і остання літери збігаються: ${firstAndLastEqual}<br>`)
+        document.write(`- складаються з більше ніш 5 символів: ${lengthMoreThen5}`)
+    </script>
+</body>
+
+<!-- <script>
         const carNumArray = ['AA1975KA', 'AM6814KM', 'AB3314KB', 'AC6328KC', 'AA2244KA', 'CE33IE', 'BA4HA', 'AIKI']
 
         function carNumFindFirstLetterA(carNumArray) {
@@ -70,7 +107,7 @@
         document.write(`<div><p>Авто номери починаються на букву «А» = ${countСarNumFirstLetterA} разів</p></div>
     		<div><p>Перша і остання літери авто номерів співпадають = ${countСarNumFirstAndLastLettersMatch} разів</p></div>
     		<div><p>Авто номери які складаються з більше ніш 5 символів = ${countСarNumMoreThanFiveWords} разів</p></div>`)
-    </script>
+    </script> -->
 </body>
 
 </html>

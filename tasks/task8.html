@@ -20,8 +20,35 @@
             виграш.</p>
     </div>
     <h2 class="task-h2">Розв'язок:</h2>
-
     <script>
+        function getRandomArr(valuesNum, min, max) {
+            let arr = []
+            for (let i = 0; i < valuesNum; i++) {
+                const randNum = min + Math.floor(Math.random() * (max - min + 1))
+                arr.push(randNum)
+            }
+            return arr
+        }
+
+        function playLottery(lotteryTicketsArr) {
+            let element, info, playerAnswer, totalWin = 0
+            do {
+                element = parseInt(prompt(`Виберіть доступний лотерейний квиток від 1 до ${lotteryTicketsArr.length}`))
+                totalWin += lotteryTicketsArr[element - 1]
+                info = `Ви виграли ${lotteryTicketsArr[element - 1]} грн. Ваш загальний виграш ${totalWin}грн.\nБажаєте продовжити?`
+                playerAnswer = confirm(info)
+            } while (playerAnswer)
+
+            return totalWin
+        }
+
+        const lotteryTickets = getRandomArr(100, -500, 500)
+        const lottery = playLottery(lotteryTickets)
+
+        document.write(`Ви виграли ${lottery} грн.`)
+    </script>
+
+    <!-- <script>
         function calculateWinSum(winningAmountArray) {
             let winSum = 0
             for (let i = 0; i < winningAmountArray.length; i++) {
@@ -42,7 +69,7 @@
         const winningAmountArray = [-5, -4, -3, -2, -1, 1, 2, 3, 4, 5]
         const totalWin = calculateWinSum(winningAmountArray)
         document.write(`Ваш виграш становить ${totalWin}`)
-    </script>
+    </script> -->
 </body>
 
 </html>
